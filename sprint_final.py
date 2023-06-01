@@ -6,7 +6,6 @@ nombres_usuarios = ['user_1', 'user_2', 'user_3', 'user_4', 'user_5',
 
 cuentas_usuarios = {}
 
-
 def generar_contrasena():
     '''
     Genera una contraseña aleatoria y que contiene al menos un numero,
@@ -33,16 +32,18 @@ def generar_contrasena():
     random.shuffle(caracteres)
     return ''.join(caracteres)
 
+#Funcion que crea a todos los usuarios una cuenta automáticamente
 def creacion_cuenta(nombre_usuario):
     contraseña = generar_contrasena()
     cuentas_usuarios[nombre_usuario] = {'contraseña': contraseña, 'num_telefonico': ''}
-
+    
+#Funcion para validar que el telefono ingresado corresponda a solo numeros y tenga 8 digitos
 def validar_numero_telefonico(numero):
     if len(numero) == 8 and numero.isdigit():
         return True
     else:
         return False
-
+#funcion que asigna los numeros telefonicos a los usuarios 
 def asignar_numeros_telefonicos():
     usuarios_sin_numero = nombres_usuarios.copy()
     while usuarios_sin_numero:
@@ -59,5 +60,7 @@ for usuario in nombres_usuarios:
 
 asignar_numeros_telefonicos()
 
+#String que permite guardar en formato de cadena del diccionario cuentas_usuarios 
+#en la variable datos_usuarios utilizando la función
 datos_usuarios = str(cuentas_usuarios)
 print(datos_usuarios)
